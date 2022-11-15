@@ -4,7 +4,6 @@ import string
 import shutil
 
 import requests
-import rich.progress
 
 
 # TODO: Need fix
@@ -48,7 +47,7 @@ def parse_css(css: string):
 
     os.makedirs('output', exist_ok=True)
     with open('output/' + 'fonts' + '.css', 'w+') as f:
-        for i in rich.progress.track(css_font_family):
+        for i in css_font_family:
             file_name = re.findall(r'([^/]*\.[^/]*)$', i['src-url'])[0]
             # download font file
             download_file(i['src-url'], 'output/' + file_name)
